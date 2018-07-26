@@ -1,135 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="collinpotter.timeapplication.MainActivity">
 
     <TextView
         android:id="@+id/secondText"
-        android:layout_width="99dp"
+        android:layout_width="63dp"
         android:layout_height="63dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Seconds"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="366dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerSec"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/Minutes"
-        android:layout_width="88dp"
+        android:layout_width="63dp"
         android:layout_height="63dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Minutes"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="268dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerMin"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/hourText2"
-        android:layout_width="69dp"
+        android:layout_width="63dp"
         android:layout_height="63dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Hours"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="184dp"
-        tools:layout_editor_absoluteY="315dp" />
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerHour"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/titleText2"
         android:layout_width="259dp"
         android:layout_height="63dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="timerTextPlaceholder"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="152dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/clockMenuButton"
-        android:layout_width="209dp"
-        android:layout_height="116dp"
-        android:text="Clock"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/alarmMenuButton"
-        android:layout_width="194dp"
-        android:layout_height="116dp"
-        android:text="Alarm"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="0dp" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/timerMenuButton"
-        android:layout_width="199dp"
-        android:layout_height="116dp"
-        android:text="Timer"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="403dp"
-        tools:layout_editor_absoluteY="0dp" />
+        <Button
+            android:id="@+id/clockMenuButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="Clock"
+            android:textSize="10sp" />
 
-    <Button
-        android:id="@+id/stopwatchMenuButton"
-        android:layout_width="195dp"
-        android:layout_height="117dp"
-        android:text="Stopwatch"
-        tools:layout_editor_absoluteX="602dp"
-        tools:layout_editor_absoluteY="0dp" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/alarmMenuButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="Alarm"
+            android:textSize="10sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/timerMenuButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="Timer"
+            android:textSize="10sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/stopwatchMenuButton"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="Stopwatch"
+            android:textSize="10sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/timerHour"
-        android:layout_width="252dp"
+        android:layout_width="63dp"
         android:layout_height="93dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="right"
         android:inputType="number"
         android:text="00"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="214dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/timeGap"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/titleText2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/timerSec"
-        android:layout_width="439dp"
+        android:layout_width="63dp"
         android:layout_height="93dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="left"
         android:inputType="number"
         android:text="00"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="345dp"
-        tools:layout_editor_absoluteY="214dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/timerMin"
         android:layout_width="63dp"
         android:layout_height="93dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="left"
         android:inputType="number"
         android:text="00"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="275dp"
-        tools:layout_editor_absoluteY="214dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/timeGap"
-        android:layout_width="18dp"
+        android:layout_width="15dp"
         android:layout_height="93dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text=":"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="268dp"
-        tools:layout_editor_absoluteY="222dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/timeGap2"
         android:layout_width="15dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text=":"
         android:textSize="50sp"
-        tools:layout_editor_absoluteX="338dp"
-        tools:layout_editor_absoluteY="222dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
