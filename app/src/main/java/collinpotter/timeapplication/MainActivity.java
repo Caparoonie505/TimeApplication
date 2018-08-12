@@ -1,8 +1,10 @@
 package collinpotter.timeapplication;
 
 import android.os.CountDownTimer;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,89 +15,36 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static long START_TIME_IN_MILLIS = 3600000;
+    private static final String TAG = "MainActivity";
 
-    private TextView TextViewCountDown;
-    private Button ButtonTimerStart;
-    private Button ButtonTimerReset;
+    private SectionStatePageAdapter mSectionStatePageAdapter;
+    private ViewPager mViewPager;
 
-    private CountDownTimer CountDownTimer;
-    private boolean isTimerRunning;
-    private long TimeLeftInMillis = START_TIME_IN_MILLIS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextViewCountDown = findViewById(R.id.textViewCountdown);
-        ButtonTimerStart = findViewById(R.id.button_StartTimer);
-        ButtonTimerReset = findViewById(R.id.button_ResetTimer);
+        Log.d(TAG, "onCreate: Started.");
 
-        ButtonTimerStart.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                if(isTimerRunning){
-                    pauseTimer();
-                }else{
-                    startTimer();
-                }
-            }
-        });
+        mSectionStatePageAdapter = new SectionStatePageAdapter(getSupportFragmentManager());
 
-        ButtonTimerReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resetTimer();
-            }
-        });
-
-        updateCountDownText();
-    }
-
-    private void startTimer(){
-        CountDownTimer = new CountDownTimer(TimeLeftInMillis,1000){
-            @Override
-            public void onTick(long millisUntilFinished){
-                TimeLeftInMillis = millisUntilFinished;
-                updateCountDownText();
-            }
-            @Override
-            public void onFinish(){
-                isTimerRunning = false;
-                ButtonTimerStart.setText("Start");
-                ButtonTimerStart.setVisibility(View.INVISIBLE);
-                ButtonTimerReset.setVisibility(View.VISIBLE);
-
-            }
-        }.start();
-
-        isTimerRunning = true;
-        ButtonTimerStart.setText("pause");
-        ButtonTimerReset.setVisibility(View.INVISIBLE);
-    }
-    private void pauseTimer(){
-        CountDownTimer.cancel();
-        isTimerRunning = false;
-        ButtonTimerStart.setText("start");
-        ButtonTimerReset.setVisibility(View.VISIBLE);
-    }
-    private void resetTimer(){
-        TimeLeftInMillis = START_TIME_IN_MILLIS;
-        updateCountDownText();
-        ButtonTimerReset.setVisibility(View.INVISIBLE);
-        ButtonTimerStart.setVisibility(View.VISIBLE);
-    }
-
-    private void updateCountDownText(){
-        int hours = (int) TimeLeftInMillis / 1000 / 60 / 60;
-        int minutes = (int) TimeLeftInMillis / 1000 / 60;
-        int seconds = (int) TimeLeftInMillis / 1000 % 60;
-
-        if(minutes == 60){
-            minutes = 0;
-        }
-        String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d:%02d", hours, minutes, seconds);
-
-        TextViewCountDown.setText(timeLeftFormatted);
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        //Setup pager
+        setupViewPager(mViewPager);
 
     }
+
+    private void setupViewPager(ViewPager viewPager){
+        SectionStatePageAdapter adapter = new SectionStatePageAdapter(getSupportFragmentManager());
+        adapter.addFragment(new fragmentClock(),"fragmentClock");
+        adapter.addFragment(new fragmentAlarm(),"fragmentAlarm");
+        adapter.addFragment(new fragmentTimer(),"fragmentTimer");
+        adapter.addFragment(new fragmentStopwatch(),"fragmentStopwatch");
+        viewPager.setAdapter(adapter);
+    }
+
+    public void setViewPager(int fragmentNumber){
+        mViewPager.setCurrentItem(fragmentNumber);
+    }
+
 }
