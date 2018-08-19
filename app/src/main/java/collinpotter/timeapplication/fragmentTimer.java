@@ -22,6 +22,9 @@ public class fragmentTimer extends Fragment {
     private Button btnNavAlarm;
     private Button btnNavTimer;
     private Button btnNavStopwatch;
+    private Button decHour;
+    private Button decMinute;
+    private Button decSecond;
 
     private static long START_TIME_IN_MILLIS = 3600000;
 
@@ -42,6 +45,9 @@ public class fragmentTimer extends Fragment {
         btnNavAlarm = (Button) view.findViewById(R.id.alarmMenuButton);
         btnNavTimer = (Button) view.findViewById(R.id.timerMenuButton);
         btnNavStopwatch = (Button) view.findViewById(R.id.stopwatchMenuButton);
+        decHour = (Button) view.findViewById(R.id.decrementHour);
+        decMinute = (Button) view.findViewById(R.id.decrementMinute);
+        decSecond = (Button) view.findViewById(R.id.decrementSecond);
         Log.d(TAG,"onCreateView: started.");
 
         btnNavClock.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +105,36 @@ public class fragmentTimer extends Fragment {
             @Override
             public void onClick(View view) {
                 resetTimer();
+            }
+        });
+
+        decHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isTimerRunning && (TimeLeftInMillis >= 3600000)) {
+                    TimeLeftInMillis -= 3600000;
+                    updateCountDownText();
+                }
+            }
+        });
+
+        decMinute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isTimerRunning && (TimeLeftInMillis >= 60000)) {
+                    TimeLeftInMillis -= 60000;
+                    updateCountDownText();
+                }
+            }
+        });
+
+        decSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isTimerRunning && (TimeLeftInMillis >= 1000)) {
+                    TimeLeftInMillis -= 1000;
+                    updateCountDownText();
+                }
             }
         });
 
