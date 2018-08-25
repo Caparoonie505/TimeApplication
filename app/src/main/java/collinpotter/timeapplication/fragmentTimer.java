@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +20,8 @@ public class fragmentTimer extends Fragment {
     private static final String TAG = "fragmentTimer";
 
     private Button btnNavClock;
-    private Button btnNavAlarm;
-    private Button btnNavTimer;
+    private ImageButton btnNavAlarm;
+    private ImageButton btnNavTimer;
     private Button btnNavStopwatch;
     private Button decHour;
     private Button decMinute;
@@ -42,8 +43,8 @@ public class fragmentTimer extends Fragment {
         View view = inflater.inflate(R.layout.fragment_timer,container,false);
 
         btnNavClock = (Button) view.findViewById(R.id.clockMenuButton);
-        btnNavAlarm = (Button) view.findViewById(R.id.alarmMenuButton);
-        btnNavTimer = (Button) view.findViewById(R.id.timerMenuButton);
+        btnNavAlarm = (ImageButton) view.findViewById(R.id.alarmMenuButton);
+        btnNavTimer = (ImageButton) view.findViewById(R.id.timerMenuButton);
         btnNavStopwatch = (Button) view.findViewById(R.id.stopwatchMenuButton);
         decHour = (Button) view.findViewById(R.id.decrementHour);
         decMinute = (Button) view.findViewById(R.id.decrementMinute);

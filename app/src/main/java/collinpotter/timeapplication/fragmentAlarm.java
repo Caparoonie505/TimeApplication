@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class fragmentAlarm extends Fragment {
@@ -15,8 +16,8 @@ public class fragmentAlarm extends Fragment {
     private static final String TAG = "fragmentAlarm";
 
     private Button btnNavClock;
-    private Button btnNavAlarm;
-    private Button btnNavTimer;
+    private ImageButton btnNavAlarm;
+    private ImageButton btnNavTimer;
     private Button btnNavStopwatch;
 
     @Nullable
@@ -25,8 +26,8 @@ public class fragmentAlarm extends Fragment {
         View view = inflater.inflate(R.layout.fragment_alarm,container,false);
 
         btnNavClock = (Button) view.findViewById(R.id.clockMenuButton);
-        btnNavAlarm = (Button) view.findViewById(R.id.alarmMenuButton);
-        btnNavTimer = (Button) view.findViewById(R.id.timerMenuButton);
+        btnNavAlarm = (ImageButton) view.findViewById(R.id.alarmMenuButton);
+        btnNavTimer = (ImageButton) view.findViewById(R.id.timerMenuButton);
         btnNavStopwatch = (Button) view.findViewById(R.id.stopwatchMenuButton);
         Log.d(TAG,"onCreateView: started.");
 
