@@ -21,6 +21,9 @@ public class fragmentTimer extends Fragment {
     private Button decHour;
     private Button decMinute;
     private Button decSecond;
+    private Button incHour;
+    private Button incMinute;
+    private Button incSecond;
 
     private static long START_TIME_IN_MILLIS = 3600000;
 
@@ -39,6 +42,9 @@ public class fragmentTimer extends Fragment {
         decHour = (Button) view.findViewById(R.id.decrementHour);
         decMinute = (Button) view.findViewById(R.id.decrementMinute);
         decSecond = (Button) view.findViewById(R.id.decrementSecond);
+        incHour = (Button) view.findViewById(R.id.incrementHour);
+        incMinute = (Button) view.findViewById(R.id.incrementMinute);
+        incSecond = (Button) view.findViewById(R.id.incrementSecond);
         Log.d(TAG,"onCreateView: started.");
 
 
@@ -89,6 +95,36 @@ public class fragmentTimer extends Fragment {
             public void onClick(View view) {
                 if(!isTimerRunning && (TimeLeftInMillis >= 1000)) {
                     TimeLeftInMillis -= 1000;
+                    updateCountDownText();
+                }
+            }
+        });
+
+        incHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isTimerRunning){
+                    TimeLeftInMillis += 3600000;
+                    updateCountDownText();
+                }
+            }
+        });
+
+        incMinute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isTimerRunning){
+                    TimeLeftInMillis += 60000;
+                    updateCountDownText();
+                }
+            }
+        });
+
+        incSecond.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isTimerRunning){
+                    TimeLeftInMillis += 1000;
                     updateCountDownText();
                 }
             }
