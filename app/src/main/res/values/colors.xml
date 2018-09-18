@@ -3,5 +3,6 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
     <color name="colorAccent">#000000</color>
-    <color name="colorAlarmAdd">#26b6c6</color>
+    <color name="colorAlarmAdd">#b3b3b3</color>
+    <color name="colorAlarmAddPressed">#747474</color>
 </resources>
