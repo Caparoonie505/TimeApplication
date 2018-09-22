@@ -8,11 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -20,10 +17,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private static final String TAG = "RecyclerViewAdapter";
 
-    private ArrayList<String> alarmTimes = new ArrayList<>();
-    private ArrayList<String> alarmNames = new ArrayList<>();
-    private ArrayList<String> alarmPeriods = new ArrayList<>();
-    private ArrayList<String> alarmDays = new ArrayList<>();
+    private ArrayList<String> alarmTimes;
+    private ArrayList<String> alarmNames;
+    private ArrayList<String> alarmPeriods;
+    private ArrayList<String> alarmDays;
     private Context mContext;
 
     public RecyclerViewAdapter(ArrayList<String> times, ArrayList<String> names, ArrayList<String> periods, ArrayList<String> days, Context context) {
@@ -66,6 +63,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return alarmNames.size();
     }
 
+    public void addItem(String time, String name, String period, String day){
+        alarmTimes.add(time);
+        alarmNames.add(name);
+        alarmPeriods.add(period);
+        alarmDays.add(day);
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 

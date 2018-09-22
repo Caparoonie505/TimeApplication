@@ -16,7 +16,7 @@
         android:textStyle="bold"
         android:id="@+id/alarm_item_time"
         android:src="@mipmap/ic_launcher"
-        android:gravity="center_vertical"
+        android:gravity="end|center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -24,6 +24,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:text="AM"
+        android:layout_marginLeft="10dp"
         android:textColor="#000"
         android:id="@+id/timePeriod"
         app:layout_constraintLeft_toRightOf="@id/alarm_item_time"

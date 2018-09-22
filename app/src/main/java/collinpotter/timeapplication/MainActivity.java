@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new fragmentAlarm(),"fragmentAlarm");
         adapter.addFragment(new fragmentTimer(),"fragmentTimer");
         adapter.addFragment(new fragmentStopwatch(),"fragmentStopwatch");
+        adapter.addFragment(new fragmentAlarmCreate(), "fragmentAlarmCreate");
         viewPager.setAdapter(adapter);
     }
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
+
+    <Button
+        android:id="@+id/btnAlarmSave"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="1dp"
+        android:text="Save"
+        app:layout_constraintBottom_toTopOf="@+id/btnAlarmCreateDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAlarmCancel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAlarmCancel"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="1dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toTopOf="@+id/textAlarmCreateDay"
+        app:layout_constraintEnd_toStartOf="@+id/btnAlarmSave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TimePicker
+        android:id="@+id/recyclerViewTimeList"
+        android:layout_width="0dp"
+        android:layout_height="235dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="#b0b0b0"
+        android:numbersSelectorColor="#ffffff"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/advancedSettingsRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlarmCreateDate" />
+
+    <TextView
+        android:id="@+id/textAlarmCreateDay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="472dp"
+        android:layout_marginStart="1dp"
+        android:gravity="center"
+        android:text="9/19/2018"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAlarmCreateDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlarmCancel" />
+
+    <Button
+        android:id="@+id/btnAlarmCreateDate"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginEnd="3dp"
+        android:onClick="showDatePickerDialog"
+        android:text="Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textAlarmCreateDay"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlarmSave" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/advancedSettingsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="228dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewTimeList">
+
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>
