@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Time;
 import java.util.Locale;
 
 public class fragmentTimer extends Fragment {
@@ -75,7 +76,7 @@ public class fragmentTimer extends Fragment {
             public void onClick(View view) {
                 if(!isTimerRunning && (TimeLeftInMillis >= 3600000)) {
                     TimeLeftInMillis -= 3600000;
-                    updateCountDownText();
+                    setTimeString(TimeLeftInMillis);
                 }
             }
         });
@@ -85,7 +86,7 @@ public class fragmentTimer extends Fragment {
             public void onClick(View view) {
                 if(!isTimerRunning && (TimeLeftInMillis >= 60000)) {
                     TimeLeftInMillis -= 60000;
-                    updateCountDownText();
+                    setTimeString(TimeLeftInMillis);
                 }
             }
         });
@@ -95,7 +96,7 @@ public class fragmentTimer extends Fragment {
             public void onClick(View view) {
                 if(!isTimerRunning && (TimeLeftInMillis >= 1000)) {
                     TimeLeftInMillis -= 1000;
-                    updateCountDownText();
+                    setTimeString(TimeLeftInMillis);
                 }
             }
         });
@@ -105,7 +106,7 @@ public class fragmentTimer extends Fragment {
             public void onClick(View view) {
                 if(!isTimerRunning){
                     TimeLeftInMillis += 3600000;
-                    updateCountDownText();
+                    setTimeString(TimeLeftInMillis);
                 }
             }
         });
@@ -115,7 +116,7 @@ public class fragmentTimer extends Fragment {
             public void onClick(View view) {
                 if(!isTimerRunning){
                     TimeLeftInMillis += 60000;
-                    updateCountDownText();
+                    setTimeString(TimeLeftInMillis);
                 }
             }
         });
@@ -125,12 +126,10 @@ public class fragmentTimer extends Fragment {
             public void onClick(View view) {
                 if(!isTimerRunning){
                     TimeLeftInMillis += 1000;
-                    updateCountDownText();
+                    setTimeString(TimeLeftInMillis);
                 }
             }
         });
-
-        updateCountDownText();
 
         return view;
     }
@@ -139,7 +138,7 @@ public class fragmentTimer extends Fragment {
             @Override
             public void onTick(long millisUntilFinished){
                 TimeLeftInMillis = millisUntilFinished;
-                updateCountDownText();
+                setTimeString(TimeLeftInMillis);
             }
             @Override
             public void onFinish(){
@@ -163,22 +162,41 @@ public class fragmentTimer extends Fragment {
     }
     private void resetTimer(){
         TimeLeftInMillis = START_TIME_IN_MILLIS;
-        updateCountDownText();
+        setTimeString(START_TIME_IN_MILLIS);
         ButtonTimerReset.setVisibility(View.INVISIBLE);
         ButtonTimerStart.setVisibility(View.VISIBLE);
     }
 
-    private void updateCountDownText(){
-        int hours = (int) TimeLeftInMillis / 1000 / 60 / 60;
-        int minutes = (int) TimeLeftInMillis / 1000 / 60;
-        int seconds = (int) TimeLeftInMillis / 1000 % 60;
-
-        if(minutes == 60){
-            minutes = 0;
+    public void setTimeString(long remainingTime) {
+        boolean isNegative = false;
+        if(remainingTime < 0){
+            remainingTime = -remainingTime;
+            isNegative = true;
         }
+        int hours = (int) (remainingTime / 3600000);
+        int remainder = (int) (remainingTime % 3600000);
+
+        int minutes = (int) (remainder / 60000);
+        remainder = (int) (remainder % 60000);
+
+        int seconds = (int) (remainder / 1000);
+        remainder = (int) (remainder % 1000);
+
+        //Round up to the next second
+        if(!isNegative && remainder != 0){
+            seconds++;
+            if (seconds == 60) {
+                seconds = 0;
+                minutes++;
+                if(minutes == 60){
+                    hours++;
+                }
+            }
+        }
+
         String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d:%02d", hours, minutes, seconds);
 
         TextViewCountDown.setText(timeLeftFormatted);
-
     }
+
 }
